@@ -35,7 +35,39 @@ public class Application {
 
         // 3. 결과 계산
         Map<String, Integer> result = new HashMap<>();
+        result.put("3개 일치 (5,000원)", 0);
+        result.put("4개 일치 (50,000원)", 0);
+        result.put("5개 일치 (1,500,000원)", 0);
+        result.put("5개 일치 (30,000,000원), 보너스 볼 일치", 0);
+        result.put("6개 일치 (2,000,000,000원)", 0);
 
+        for (List<Integer> lotto : allLotto) {
+            int matchCount = 0;
+
+            for (int n : lotto) {
+                if (winNumbers.contains(n)) {
+                    matchCount++;
+                }
+            }
+
+            boolean bonusMatch = lotto.contains(bonus); // 보너스 볼 맞은 경우 true
+            if (matchCount == 3) {
+                result.put("3개 일치 (5,000원)", result.get("3개 일치 (5,000원)")+1);
+            }
+            if (matchCount == 4) {
+                result.put("4개 일치 (50,000원)", result.get("4개 일치(5,0000원)")+1);
+            }
+            if (matchCount == 5 && !bonusMatch) {
+                result.put("5개 일치 (1,500,000원)", result.get("5개 일치 (1,500,000원)")+1);
+            }
+            if (matchCount == 5 && bonusMatch) {
+                result.put("5개 일치 (30,000,000원), 보너스 볼 일치", result.get("5개 일치 (30,000,000원), 보너스 볼 일치")+1);
+            }
+            if (matchCount == 6) {
+                result.put("6개 일치 (2,000,000,000원)", result.get("6개 일치 (2,000,000,000원)")+1);
+            }
+
+        }
 
         // 4. 당첨 통계
         System.out.println("당첨 통계");
