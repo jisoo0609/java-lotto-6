@@ -38,7 +38,7 @@ public class Application {
         result.put("3개 일치 (5,000원)", 0);
         result.put("4개 일치 (50,000원)", 0);
         result.put("5개 일치 (1,500,000원)", 0);
-        result.put("5개 일치 (30,000,000원), 보너스 볼 일치", 0);
+        result.put("5개 일치, 보너스 볼 일치 (30,000,000원)", 0);
         result.put("6개 일치 (2,000,000,000원)", 0);
 
         for (List<Integer> lotto : allLotto) {
@@ -55,13 +55,13 @@ public class Application {
                 result.put("3개 일치 (5,000원)", result.get("3개 일치 (5,000원)")+1);
             }
             if (matchCount == 4) {
-                result.put("4개 일치 (50,000원)", result.get("4개 일치(5,0000원)")+1);
+                result.put("4개 일치 (50,000원)", result.get("4개 일치 (50,000원)")+1);
             }
             if (matchCount == 5 && !bonusMatch) {
                 result.put("5개 일치 (1,500,000원)", result.get("5개 일치 (1,500,000원)")+1);
             }
             if (matchCount == 5 && bonusMatch) {
-                result.put("5개 일치 (30,000,000원), 보너스 볼 일치", result.get("5개 일치 (30,000,000원), 보너스 볼 일치")+1);
+                result.put("5개 일치, 보너스 볼 일치 (30,000,000원)", result.get("5개 일치, 보너스 볼 일치 (30,000,000원)")+1);
             }
             if (matchCount == 6) {
                 result.put("6개 일치 (2,000,000,000원)", result.get("6개 일치 (2,000,000,000원)")+1);
@@ -83,9 +83,9 @@ public class Application {
                 result.get("4개 일치 (50,000원)") * 50000 +
                 result.get("5개 일치 (1,500,000원)") * 1500000 +
                 result.get("5개 일치, 보너스 볼 일치 (30,000,000원)") * 30000000 +
-                result.get ("6개 일치(2,000,000,000원)") * 2000000000;
+                result.get ("6개 일치 (2,000,000,000원)") * 2000000000;
 
         double profit  = (double) total / price *100;
-        System.out.println("총 수익률은 " + profit + "%입니다");
+        System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 }
