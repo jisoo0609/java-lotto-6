@@ -73,6 +73,19 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
 
+        for (Map.Entry<String, Integer> map : result.entrySet()) {
+            System.out.println(map.getKey() + " - " + map.getValue() + "개");
+        }
 
+        // 5. 수익률 계산
+        int total =
+                result.get("3개 일치 (5,000원)") * 5000 +
+                result.get("4개 일치 (50,000원)") * 50000 +
+                result.get("5개 일치 (1,500,000원)") * 1500000 +
+                result.get("5개 일치, 보너스 볼 일치 (30,000,000원)") * 30000000 +
+                result.get ("6개 일치(2,000,000,000원)") * 2000000000;
+
+        double profit  = (double) total / price *100;
+        System.out.println("총 수익률은 " + profit + "%입니다");
     }
 }
