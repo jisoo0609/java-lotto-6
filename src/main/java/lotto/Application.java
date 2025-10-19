@@ -7,8 +7,22 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("구입금액을 입력해 주세요.");
-        int price = Integer.parseInt(Console.readLine());
+        int price = 0;
+
+        while (true) {
+            System.out.println("구입금액을 입력해 주세요.");
+            String inputPrice = Console.readLine();
+
+            try {
+                price = Integer.parseInt(inputPrice);
+                if (price < 1000 || price % 1000 != 0) {
+                    throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
+                }
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 구입금액이 잘못되었습니다.");
+            }
+        }
         int count = price / 1000;
 
         System.out.println(count + "개를 구매했습니다.");
